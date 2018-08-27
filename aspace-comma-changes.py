@@ -38,7 +38,7 @@ def extract_resources(y):
     rec_index = []
     rec_titles = []
     rec_coll_nums = []
-    print('Processing...')
+    print('Extracting...')
     for record in tqdm(all_records):
         uri = base_uri + str(record)
         try:
@@ -59,7 +59,7 @@ def extract_resources(y):
     today_date = datetime.datetime.today().strftime('%Y-%m-%d')
     file_name = 'comma_ending_' + obj_type + '_' + str(today_date) + '.csv'
     indexed_rec_df.to_csv(file_name)
-    print(str(len(rec_index)) + ' matching ' + y + ' extracted with titles ending in commas.')
+    print(str(len(rec_index)) + ' ' + y + ' with titles ending in commas extracted.')
     return indexed_rec_df
 
 
