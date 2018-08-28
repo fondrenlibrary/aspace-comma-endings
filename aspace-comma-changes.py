@@ -27,12 +27,12 @@ def extract_resources(y):
     """Look for ArchivesSpace resources that match pattern_matcher, then save them in a list and generate a CSV report."""
     if y == 'resources':
         obj_type = 'resource_records'
-        all_records = client.get('repositories/2/resources?all_ids=true').json()
+        all_records = client.get('repositories/2/resources', params={'all_ids': True}).json()
         base_uri = 'repositories/2/resources/'
         identifier = 'id_0'
     elif y == 'archival objects':
         obj_type = 'archival_objects'
-        all_records = client.get('repositories/2/archival_objects?all_ids=true').json()
+        all_records = client.get('repositories/2/archival_objects', params={'all_ids': True}).json()
         base_uri = 'repositories/2/archival_objects/'
         identifier = 'ref_id'
     rec_index = []
@@ -59,7 +59,7 @@ def extract_resources(y):
     today_date = datetime.datetime.today().strftime('%Y-%m-%d')
     file_name = 'comma_ending_' + obj_type + '_' + str(today_date) + '.csv'
     indexed_rec_df.to_csv(file_name)
-    print(str(len(rec_index)) + ' ' + y + ' with titles ending in commas extracted.')
+    print('Extracted ' + str(len(rec_index)) + ' ' + y + ' with titles ending in commas.')
     return indexed_rec_df
 
 
