@@ -12,6 +12,8 @@ To run, you will need the following libraries installed:
 
 
 You will also need to edit the script with your credentials here:
-```client = ASnakeClient(baseurl='xxx',
+```
+client = ASnakeClient(baseurl='xxx',
                       username='xxx',
-                      password='xxx')```
+                      password='xxx')
+```
